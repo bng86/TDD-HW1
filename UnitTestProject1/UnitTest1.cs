@@ -19,9 +19,11 @@ namespace UnitTestProject1
             //act
             var actual = target.GetPriceSum(costs, groupSize);
             //assert
-            CollectionAssert.AreEqual(actual, expected);
+            CollectionAssert.AreEqual(expected, actual);
 
         }
+
+        
 
         [TestMethod]
         public void GetPriceSum_sum_of_revenue_group_size_4()
@@ -34,7 +36,7 @@ namespace UnitTestProject1
             //act
             var actual = target.GetPriceSum(costs, groupSize);
             //assert
-            CollectionAssert.AreEqual(actual, expected);
+            CollectionAssert.AreEqual(expected, actual);
 
         }
     }

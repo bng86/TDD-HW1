@@ -8,12 +8,12 @@ namespace UnitTestProject1
     [TestClass]
     public class GroupUnitTest
     {
-        private List<Product> FakeDatas { get; set; }
+        private List<Product> Products { get; set; }
 
         [TestInitialize]
         public void Init()
         {
-            FakeDatas = new List<Product>
+            Products = new List<Product>
             {
                 new Product {Id = 1, Cost = 1, Revenue = 11, SellPrice = 21},
                 new Product {Id = 2, Cost = 2, Revenue = 12, SellPrice = 22},
@@ -32,19 +32,19 @@ namespace UnitTestProject1
         [TestCleanup]
         public void Cleanup()
         {
-            FakeDatas = null;
+            Products = null;
         }
 
         [TestMethod]
         public void GetGroupPriceList_三筆一組_取Cost總和列表()
         {
             //arrange
-            var target = new Group();
+            var target = new Group(Products);
             var groupSize = 3;
-            var costs = FakeDatas.Select(x => x.Cost).ToList();
+            var field = GroupField.Cost;
             var expected = new List<int> { 6, 15, 24, 21 };
             //act
-            var actual = target.GetGroupPriceList(costs, groupSize);
+            var actual = target.GetGroupPriceList(field, groupSize);
             //assert
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -53,12 +53,12 @@ namespace UnitTestProject1
         public void GetGroupPriceList_四筆一組_取Revenue總和列表()
         {
             //arrange
-            var target = new Group();
+            var target = new Group(Products);
             var groupSize = 4;
-            var revenue = FakeDatas.Select(x => x.Revenue).ToList();
+            var field = GroupField.Revenue;
             var expected = new List<int> { 50, 66, 60 };
             //act
-            var actual = target.GetGroupPriceList(revenue, groupSize);
+            var actual = target.GetGroupPriceList(field, groupSize);
             //assert
             CollectionAssert.AreEqual(expected, actual);
         }

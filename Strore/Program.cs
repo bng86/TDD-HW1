@@ -8,7 +8,7 @@ namespace Strore
         static void Main(string[] args)
         {
 
-        }        
+        }
     }
 
     public class Product
@@ -19,18 +19,33 @@ namespace Strore
         public int SellPrice { get; set; }
     }
 
+
+    public enum GroupField
+    {
+        Cost,
+        Revenue
+    }
+
     public class Group
     {
-        public List<int> GetGroupPriceList(List<int> items, int numberOfGroup)
+        private readonly List<Product> _products;
+
+        public Group(List<Product> products)
+        {
+            _products = products;
+        }
+
+        public List<int> GetGroupPriceList(GroupField field, int numberOfGroup)
         {
             var result = new List<int>();
 
             if (numberOfGroup < 0) numberOfGroup = 1;
 
-            var group = items.Count % numberOfGroup == 0 ?
-                items.Count / numberOfGroup : items.Count / numberOfGroup + 1;
+            var groupSize = CalculateGroupSize(_products.Count, numberOfGroup);
 
-            for (int i = 0; i < group; i++)
+            var items = GetGroupByField(field);
+
+            for (int i = 0; i < groupSize; i++)
             {
                 int total;
                 if (items.Count >= numberOfGroup)
@@ -46,6 +61,31 @@ namespace Strore
                 }
 
                 items.RemoveRange(0, numberOfGroup);
+            }
+
+            return result;
+        }
+
+        private int CalculateGroupSize(int total, int groupSize)
+        {
+            return total % groupSize == 0 ? total / groupSize : total / groupSize + 1;
+        }
+
+        private List<int> GetGroupByField(GroupField field)
+        {
+            List<int> result;
+
+            switch (field)
+            {
+                case GroupField.Cost:
+                    result = _products.Select(x => x.Cost).ToList();
+                    break;
+                case GroupField.Revenue:
+                    result = _products.Select(x => x.Revenue).ToList();
+                    break;
+                default:
+                    result = _products.Select(x => x.Cost).ToList();
+                    break;
             }
 
             return result;

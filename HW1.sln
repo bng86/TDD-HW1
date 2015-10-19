@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strore", "Strore\Strore.csproj", "{7C1E0AD0-C19B-4D89-913E-F51F6CE0B8F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product", "Strore\Product.csproj", "{7C1E0AD0-C19B-4D89-913E-F51F6CE0B8F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{F36C8D6A-479A-47B1-A649-6CC4093E8B4F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductTestProject1", "UnitTestProject1\ProductTestProject1.csproj", "{F36C8D6A-479A-47B1-A649-6CC4093E8B4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

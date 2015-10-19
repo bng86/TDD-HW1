@@ -50,13 +50,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="GroupUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Strore\Strore.csproj">
+    <ProjectReference Include="..\Strore\Product.csproj">
       <Project>{7c1e0ad0-c19b-4d89-913e-f51f6ce0b8f1}</Project>
-      <Name>Strore</Name>
+      <Name>Product</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -11,33 +11,41 @@ namespace Strore
         }        
     }
 
-    public class Sell
+    public class Product
     {
-        public List<int> GetPriceSum(List<int> costs, int numberOfGroup)
+        public int Id { get; set; }
+        public int Cost { get; set; }
+        public int Revenue { get; set; }
+        public int SellPrice { get; set; }
+    }
+
+    public class Group
+    {
+        public List<int> GetGroupPriceList(List<int> items, int numberOfGroup)
         {
             var result = new List<int>();
 
             if (numberOfGroup < 0) numberOfGroup = 1;
 
-            var group = costs.Count % numberOfGroup == 0 ?
-                costs.Count / numberOfGroup : costs.Count / numberOfGroup + 1;
+            var group = items.Count % numberOfGroup == 0 ?
+                items.Count / numberOfGroup : items.Count / numberOfGroup + 1;
 
             for (int i = 0; i < group; i++)
             {
                 int total;
-                if (costs.Count >= numberOfGroup)
+                if (items.Count >= numberOfGroup)
                 {
-                    total = costs.Take(numberOfGroup).Sum();
+                    total = items.Take(numberOfGroup).Sum();
                     result.Add(total);
                 }
                 else
                 {
-                    total = costs.Sum();
+                    total = items.Sum();
                     result.Add(total);
                     break;
                 }
 
-                costs.RemoveRange(0, numberOfGroup);
+                items.RemoveRange(0, numberOfGroup);
             }
 
             return result;

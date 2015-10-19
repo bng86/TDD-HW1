@@ -31,10 +31,10 @@ namespace UnitTestProject1
             //arrange
             var target = new Sell();
             var groupSize = 4;
-            var costs = new List<int> { 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 };
+            var revenue = new List<int> { 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 };
             var expected = new List<int> { 50, 66, 60 };
             //act
-            var actual = target.GetPriceSum(costs, groupSize);
+            var actual = target.GetPriceSum(revenue, groupSize);
             //assert
             CollectionAssert.AreEqual(expected, actual);
 
